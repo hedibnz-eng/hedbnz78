@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>HedBnz78 | Rocket League</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  /* RESET */
+  * { margin:0; padding:0; box-sizing:border-box; font-family:Arial, Helvetica, sans-serif; }
+  body { 
+    background: #05070d; 
+    color:white; 
+    text-align:center; 
+    padding:40px 20px; 
+    overflow-y:auto;  
+    cursor: default;  
+  }
+
+  /* TITRE NEON */
+  h1 {
+    font-size:3em;
+    margin-bottom:10px;
+    color:#4da6ff;
+    text-shadow:0 0 10px rgba(77,166,255,0.8);
+    animation: glow 2s infinite alternate;
+  }
+  @keyframes glow {
+    from { text-shadow:0 0 10px rgba(77,166,255,0.6); }
+    to { text-shadow:0 0 25px rgba(127,92,255,1); }
+  }
+
+  h2 { margin-top:50px; margin-bottom:15px; color:#7dd3ff; }
+  p { opacity:0.85; max-width:600px; margin:auto; }
+
+  /* CARTES */
+  .card {
+    background: rgba(255,255,255,0.05);
+    border-radius:15px;
+    padding:25px;
+    margin:20px auto;
+    max-width:500px;
+    box-shadow:0 0 20px rgba(77,166,255,0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position:relative;
+    overflow:hidden;
+  }
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow:0 0 30px rgba(77,166,255,0.25);
+  }
+
+  /* STATS */
+  .stats { display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-top:20px; }
+  .stat { background: rgba(255,255,255,0.07); padding:15px; border-radius:10px; }
+
+  /* AUTRES JEUX */
+  .games span { display:inline-block; margin:10px; padding:10px 18px; border-radius:20px; background: rgba(255,255,255,0.08); }
+
+  /* LIENS */
+  .links a {
+    display:block; margin:12px auto; padding:14px; max-width:260px; border-radius:25px;
+    text-decoration:none; color:white; background: linear-gradient(135deg,#7f5cff,#4da6ff);
+    font-weight:bold; transition: transform 0.2s, box-shadow 0.2s; position:relative; overflow:hidden;
+  }
+  .links a:hover { transform: scale(1.05); box-shadow:0 0 15px rgba(127,92,255,0.6); }
+
+  footer { margin-top:60px; opacity:0.4; font-size:0.9em; }
+
+  /* PARTICULES BOOST */
+  .particle {
+    position:absolute;
+    width:6px; height:6px; background:#4da6ff; border-radius:50%;
+    pointer-events:none;
+    opacity:0.8;
+    animation: moveParticle 1s linear forwards;
+  }
+  @keyframes moveParticle {
+    0% { transform: translate(0,0) scale(1); opacity:1; }
+    100% { transform: translate(calc(var(--dx)), calc(var(--dy))) scale(0); opacity:0; }
+  }
+
+  /* RESPONSIVE */
+  @media(max-width:600px){
+    .stats { grid-template-columns:1fr; }
+    .links a { max-width:80%; }
+  }
+</style>
+</head>
+<body>
+
+<h1>HedBnz78</h1>
+<p>Rocket League • PlayStation • Epic : H7BZ</p>
+
+<div class="card">
+  <h2>🚗 Profil joueur</h2>
+  <p>Joueur Rocket League orienté vitesse, précision et jeu d’équipe. Toujours en recherche de clean plays et de progrès.</p>
+</div>
+
+<div class="card">
+  <h2>⚽ Stats Rocket League</h2>
+  <div class="stats">
+    <div class="stat">🎮 Mode : 2v2 / 3v3</div>
+    <div class="stat">🚗 Voiture : Fennec</div>
+    <div class="stat">⚡ Style : Rapide</div>
+    <div class="stat">🏆 Rang : GC2</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>🎮 Autres jeux</h2>
+  <div class="games">
+    <span>Fortnite</span>
+    <span>GTA</span>
+    <span>FIFA</span>
+  </div>
+</div>
+
+<div class="card links">
+  <h2>🔗 Me retrouver</h2>
+  <!-- Liens directs vers tes comptes -->
+  <a href="https://www.tiktok.com/@hedbnz7821?lang=fr" target="_blank">TikTok</a>
+  <a href="https://discord.com/users/hedbnz78" target="_blank">Discord</a>
+</div>
+
+<footer>© 2026 – HedBnz78</footer>
+
+<script>
+  // PARTICULES BOOST OPTIMISÉES
+  let particles = [];
+  const maxParticles = 20; // limite stricte du nombre de particules
+
+  document.addEventListener("mousemove", function(e){
+    if(particles.length >= maxParticles) return;
+
+    const particle = document.createElement("div");
+    particle.classList.add("particle");
+    document.body.appendChild(particle);
+
+    particle.style.left = e.pageX + "px";
+    particle.style.top = e.pageY + "px";
+
+    const dx = (Math.random()*100 - 50) + "px";
+    const dy = (Math.random()*-100) + "px";
+    particle.style.setProperty("--dx", dx);
+    particle.style.setProperty("--dy", dy);
+
+    particles.push(particle);
+
+    particle.addEventListener("animationend", () => {
+      particle.remove();
+      particles = particles.filter(p => p !== particle);
+    });
+  });
+</script>
+
+</body>
+</html>
